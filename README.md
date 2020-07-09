@@ -14,4 +14,5 @@ $ jupyter notebook
 3. Step through the notebook
 4. Edit and build something cool
 
-
+jupyter notebooks store the output of the cells so be careful when sharing.
+I added nbstripout to automatically remove the output data when commiting but please check for yourself.
