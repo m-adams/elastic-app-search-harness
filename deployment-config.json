@@ -1,0 +1,94 @@
+{
+    "name": "ent-search-sizing",
+    "metadata": {
+      "system_owned": false
+    },
+    "resources": {
+      "elasticsearch": [
+        {
+          "region": "gcp-europe-west1",
+          "ref_id": "main-elasticsearch",
+          "plan": {
+            "cluster_topology": [
+              {
+                "node_type": {
+                  "data": true,
+                  "master": true,
+                  "ingest": true
+                },
+                "instance_configuration_id": "gcp.data.highcpu.1",
+                "zone_count": 2,
+                "size": {
+                  "resource": "memory",
+                  "value": 2048
+                },
+                "elasticsearch": {
+                  "enabled_built_in_plugins": [
+                    "mapper-size"
+                  ]
+                }
+              }
+            ],
+            "elasticsearch": {
+              "version": "7.8.0"
+            },
+            "deployment_template": {
+              "id": "gcp-enterprise-search-dedicated"
+            }
+          },
+          "settings": {
+            "dedicated_masters_threshold": 6
+          }
+        }
+      ],
+      "kibana": [
+        {
+          "region": "gcp-europe-west1",
+          "elasticsearch_cluster_ref_id": "main-elasticsearch",
+          "ref_id": "main-kibana",
+          "plan": {
+            "cluster_topology": [
+              {
+                "instance_configuration_id": "gcp.kibana.1",
+                "zone_count": 1,
+                "size": {
+                  "resource": "memory",
+                  "value": 1024
+                }
+              }
+            ],
+            "kibana": {
+              "version": "7.8.0"
+            }
+          }
+        }
+      ],
+      "enterprise_search": [
+        {
+          "region": "gcp-europe-west1",
+          "elasticsearch_cluster_ref_id": "main-elasticsearch",
+          "ref_id": "main-enterprise_search",
+          "plan": {
+            "cluster_topology": [
+              {
+                "node_type": {
+                  "connector": true,
+                  "appserver": true,
+                  "worker": true
+                },
+                "instance_configuration_id": "gcp.enterprisesearch.1",
+                "zone_count": 2,
+                "size": {
+                  "resource": "memory",
+                  "value": 2048
+                }
+              }
+            ],
+            "enterprise_search": {
+              "version": "7.8.0"
+            }
+          }
+        }
+      ]
+    }
+  }
