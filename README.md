@@ -1,7 +1,7 @@
 # elastic-app-search-harness
 
 This repository is designed as a simple getting started for testing Elastic App Search using a python notebook.
-It is not designed as any kiind of official or professional test harness but more for undertsnding and building one-off experiments.
+It is not designed as any kind of official or professional test harness but more for understanding and building one-off experiments.
 
 It uses jupyter notebook specificially becasue it lends itself to experimation, itteration and learning.
 
